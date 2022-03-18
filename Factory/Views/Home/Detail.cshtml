@@ -3,6 +3,8 @@
   Layout = "_Layout";
 }
 @using Factory.Models;
+@using System.Collections.Generic;
+
 <div class="container">
   @await Html.PartialAsync("_Navbar")
   @if (ViewBag.Machines.Count == 0)
@@ -27,7 +29,7 @@
       <tbody>
         @foreach (Machine machine in @ViewBag.Machines)
         {
-        
+        List<Engineer> engineers = Factory.Controllers.MachineController.GetEngineers(machine.JoinEntities);
         <tr>
           <th scope="row">@machine.MachineId</th>
           <td>@machine.Name</td>
@@ -38,7 +40,7 @@
             }
             else
             {
-              foreach(Engineer engineer in machine.JoinEntities)
+              foreach(Engineer engineer in engineers)
               {
                 <span>@engineer.Name; </span>
               }
