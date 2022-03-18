@@ -1,0 +1,18 @@
+@model Factory.Models.Machine
+<div class="collapse" id="addMachine">
+  <div class="card card-body">
+    <h5 class="card-title">Add a new Machine</h5>
+    <form action="~/Machine/Create" method="post">
+      <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class="form-control required", @required="required", @placeholder="Komatsu Pc200-7"})
+      </div>
+      <div class="form-group">
+        @Html.LabelFor(model => model.Description)
+        @Html.TextAreaFor(model => model.Description, new { @placeholder="Heavy excavator for mining operations."})
+      </div>
+      <button type="submit" class="btn btn-primary">Create Machine</button>
+      <a>@Html.ActionLink("Cancel", "Index", "Home", null, new { @class="btn btn-danger"})</a>
+    </form>
+  </div>
+</div>

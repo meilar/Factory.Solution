@@ -1,0 +1,24 @@
+
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  @await Html.PartialAsync("_Navbar")
+  <div id="new-area">
+    <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#addMachine" role="button" aria-expanded="false" aria-controls="addMachine">
+      Add a new Machine
+    </a>
+        <a class="btn btn-primary" data-toggle="collapse" href="#addEngineer" role="button" aria-expanded="false" aria-controls="addEngineer">
+      Add a new Engineer
+    </a>
+        <a class="btn btn-primary" data-toggle="collapse" href="#addLicense" role="button" aria-expanded="false" aria-controls="addLicense">
+      Add a license to an existing Engineer
+    </a>
+    </p>
+  @await Html.PartialAsync("_AddMachine")
+  @await Html.PartialAsync("_AddEngineer")
+  @await Html.PartialAsync("_AddLicense")
+  </div>
+  @await Html.PartialAsync("_Footer")
+</div>
