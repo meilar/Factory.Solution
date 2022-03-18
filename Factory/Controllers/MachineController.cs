@@ -15,17 +15,15 @@ namespace Factory.Controllers
         _db = db;
       }
 
-      public static List<Engineer> GetEngineers(ICollection<EngineerMachine> joinEntities)
+      public static Machine GetMachine(int id)
       {
-        List<Engineer> engineers = new List<Engineer>();
-        foreach(EngineerMachine join in joinEntities)
-        {
-          int id = join.EngineerId;
-          Engineer thisEngineer = MachineController._db.Engineers.FirstOrDefault(e => e.EngineerId == id);
-          engineers.Add(thisEngineer);
-        }
-        return engineers;
-      }
 
+        var thisMachine = _db.Machines
+          .Include(machine => machine.JoinEntities)
+          .ThenInclude(join => join.Engineer)
+          .FirstOrDefault(machine => machine.MachineId ==id);
+        
+        return thisMachine;
+      }
     }
 }
