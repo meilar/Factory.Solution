@@ -1,0 +1,15 @@
+
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  @await Html.PartialAsync("_Navbar")
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Welcome to RepairWare: Modern Factory Management.</h5>
+      <p class="card-text">Click on the links above to get started.</p>
+    </div>
+    <img id="homepage-photo" class="card-img-bottom" src="~/img/chuttersnap-_EFvjSgbw1c-unsplash.jpg" alt="photo of factory roof">
+  </div>
+  @await Html.PartialAsync("_Footer")
+</div>
