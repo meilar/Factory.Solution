@@ -3,23 +3,18 @@
 <div class="collapse" id="addLicense">
   <div class="card card-body">
     <h5 class="card-title">Add a new Machine repair license to an existing Engineer</h5>
-    @if(ViewBag.Machines.Count == 0)
+    @if(ViewBag.Machines.Count == 0 && ViewBag.Engineers.Count == 0)
+    {
+      <p class="card-text">Woah, slow down! You'll need to add a Machine or an Engineer first.</p>
+    }
+    else if(ViewBag.Machines.Count == 0)
     {
     <p class="card-text"> There are no Machines to display. You must first add a Machine.</p>
-    <p>
-      <a class="btn btn-primary" data-toggle="collapse" href="#addMachine" role="button" aria-expanded="false" aria-controls="addMachine">
-        Add a new Machine
-      </a>
-    </p>
+
     }
     else if(ViewBag.Engineers.Count == 0)
     {
     <p class="card-text"> There are no Engineers to display. You must first add an Engineer.</p>
-    <p>
-      <a class="btn btn-primary" data-toggle="collapse" href="#addEngineer" role="button" aria-expanded="false" aria-controls="addEngineer">
-        Add a new Engineer
-      </a>
-    </p>
     }
     else 
     {
