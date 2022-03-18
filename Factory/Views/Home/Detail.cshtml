@@ -3,6 +3,7 @@
   Layout = "_Layout";
 }
 @using Factory.Models;
+@using Factory.Controllers;
 @using System.Collections.Generic;
 
 <div class="container">
@@ -29,7 +30,6 @@
       <tbody>
         @foreach (Machine machine in @ViewBag.Machines)
         {
-        List<Engineer> engineers = Factory.Controllers.MachineController.GetEngineers(machine.JoinEntities);
         <tr>
           <th scope="row">@machine.MachineId</th>
           <td>@machine.Name</td>
@@ -40,9 +40,10 @@
             }
             else
             {
-              foreach(Engineer engineer in engineers)
+              foreach(EngineerMachine join in machine.JoinEntities)
               {
-                <span>@engineer.Name; </span>
+                var thisEngineer = ViewBag.Engineers.FirstOrDefault(e => e.EngineerId == join.EngineerId);
+                <span>@thisEngineer.Name</span>
               }
             }
           </td>
