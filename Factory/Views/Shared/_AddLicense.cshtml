@@ -1,8 +1,9 @@
 @model Factory.Models.EngineerMachine
+@using System.Linq;
 <div class="collapse" id="addLicense">
   <div class="card card-body">
     <h5 class="card-title">Add a new Machine repair license to an existing Engineer</h5>
-    @if(ViewBag.MachineId.Count == 0)
+    @if(ViewBag.Machines.Count == 0)
     {
     <p class="card-text"> There are no Machines to display. You must first add a Machine.</p>
     <p>
@@ -11,7 +12,7 @@
       </a>
     </p>
     }
-    else if(ViewBag.EngineerId.Count == 0)
+    else if(ViewBag.Engineers.Count == 0)
     {
     <p class="card-text"> There are no Engineers to display. You must first add an Engineer.</p>
     <p>
