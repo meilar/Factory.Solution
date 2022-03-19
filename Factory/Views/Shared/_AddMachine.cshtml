@@ -9,7 +9,7 @@
       </div>
       <div class="form-group">
         @Html.LabelFor(model => model.Description)
-        @Html.TextAreaFor(model => model.Description, new { @placeholder="Heavy excavator for mining operations."})
+        @Html.TextAreaFor(model => model.Description, new { @class="form-control", @placeholder="Heavy excavator for mining operations."})
       </div>
       <button type="submit" class="btn btn-primary">Create Machine</button>
       <a>@Html.ActionLink("Cancel", "Index", "Home", null, new { @class="btn btn-danger"})</a>

@@ -1,13 +1,10 @@
-
 @{
   Layout = "_Layout";
 }
-@using Factory.Models;
-@using Factory.Controllers;
-@using System.Collections.Generic;
-
 <div class="container">
   @await Html.PartialAsync("_Navbar")
+  <h1 class="display-4">Machine Overview</h1>
+  @using Factory.Models;
   @if (ViewBag.Machines.Count == 0)
     {
           <div class="text-center">
@@ -22,7 +19,6 @@
         <tr>
           <th scope="col">Machine ID #</th>
           <th scope="col">Machine Name</th>
-          <th scope="col">Qualified Engineers</th>
           <th scope="col">Details</th>
           <th scope="col">Delete</th>
         </tr>
@@ -33,26 +29,44 @@
         <tr>
           <th scope="row">@machine.MachineId</th>
           <td>@machine.Name</td>
-          <td>
-            @if(machine.JoinEntities.Count == 0)
-            {
-              <span>There are no Engineers qualified to repair this machine.</span>
-            }
-            else
-            {
-              foreach(EngineerMachine join in machine.JoinEntities)
-              {
-                var thisEngineer = ViewBag.Engineers.FirstOrDefault(e => e.EngineerId == join.EngineerId);
-                <span>@thisEngineer.Name</span>
-              }
-            }
-          </td>
           <td>@Html.ActionLink("View Details", "Details", "Machine", new { @id = machine.MachineId}, new { @class = "text-primary"})</td>
           <td>@Html.ActionLink("Delete", "Delete", "Machine", new { @id = machine.MachineId}, new { @class = "text-danger"})</td>
         </tr>
         }
       </tbody>
     </table>
+    }  
+<h1 class="display-4">Engineer Overview</h1>
+@if (ViewBag.Engineers.Count == 0)
+    {
+          <div class="text-center">
+            <p class="lead">There are no Engineers to display.</p>
+            <p>@Html.ActionLink("Add a new Engineer", "Create", "Engineer", null, new { @class="btn btn-primary"})</p>
+          </div>
     }
+    else
+    {  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Engineer ID #</th>
+          <th scope="col">Engineer Name</th>
+          <th scope="col">Details</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (Engineer engineer in @ViewBag.Engineers)
+        {
+        <tr>
+          <th scope="row">@engineer.EngineerId</th>
+          <td>@engineer.Name</td>
+          <td>@Html.ActionLink("View Details", "Details", "Engineer", new { @id = engineer.EngineerId}, new { @class = "text-primary"})</td>
+          <td>@Html.ActionLink("Delete", "Delete", "Engineer", new { @id = engineer.EngineerId}, new { @class = "text-danger"})</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }  
   @await Html.PartialAsync("_Footer")
-</div>
+</div> 
