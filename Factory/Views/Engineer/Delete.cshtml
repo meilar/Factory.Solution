@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Engineer
+<div class="container">
+  @await Html.PartialAsync("_Navbar")
+  <h4 class="display-4">Are you sure you want to delete @Model.Name?</h2>
+@using (Html.BeginForm("Delete", "Engineer", new {id = Model.EngineerId}, FormMethod.Post, false, null))
+{
+    <input class="btn btn-danger" type="submit" value="Delete" />
+}
+  @Html.ActionLink("Back to List", "Index", "Engineer", null, new {@class = "btn btn-primary"})
+  @await Html.PartialAsync("_Footer")
+</div> 

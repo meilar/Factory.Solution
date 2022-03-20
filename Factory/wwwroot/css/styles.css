@@ -55,3 +55,8 @@ div#title-bar {
 .display-4 {
   text-align: center;
 }
+
+.btn {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
