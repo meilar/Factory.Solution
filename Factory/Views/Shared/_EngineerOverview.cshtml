@@ -1,0 +1,33 @@
+<h1 class="display-4">Engineer Overview</h1>
+@using Factory.Models;
+@if (ViewBag.Engineers.Count == 0)
+    {
+          <div class="text-center">
+            <p class="lead">There are no Engineers to display.</p>
+            <p>@Html.ActionLink("Add a new Engineer", "Create", "Engineer", null, new { @class="btn btn-primary"})</p>
+          </div>
+    }
+    else
+    {  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Engineer ID #</th>
+          <th scope="col">Engineer Name</th>
+          <th scope="col">Details</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (Engineer engineer in @ViewBag.Engineers)
+        {
+        <tr>
+          <th scope="row">@engineer.EngineerId</th>
+          <td>@engineer.Name</td>
+          <td>@Html.ActionLink("View Details", "Details", "Engineer", new { @id = engineer.EngineerId}, new { @class = "text-primary"})</td>
+          <td>@Html.ActionLink("Delete", "Delete", "Engineer", new { @id = engineer.EngineerId}, new { @class = "text-danger"})</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }  

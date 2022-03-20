@@ -14,5 +14,10 @@ namespace Factory.Controllers
       {
         _db = db;
       }
+      public ActionResult Index()
+      {
+        ViewBag.Machines = _db.Machines.ToList();
+        return View();
+      }
     }
 }

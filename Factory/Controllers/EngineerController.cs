@@ -14,5 +14,11 @@ namespace Factory.Controllers
       {
         _db = db;
       }
+
+      public ActionResult Index()
+      {
+        ViewBag.Engineers = _db.Engineers.ToList();
+        return View();
+      }
     }
 }
