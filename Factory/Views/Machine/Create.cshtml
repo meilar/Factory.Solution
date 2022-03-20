@@ -1,0 +1,11 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  @await Html.PartialAsync("_Navbar")
+  @await Html.PartialAsync("_AddMachine")
+  @await Html.PartialAsync("_Footer")
+</div>
+<script>
+  $("#addMachine").addClass("show");
+</script>

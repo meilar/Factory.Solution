@@ -11,6 +11,13 @@
         @Html.LabelFor(model => model.Description)
         @Html.TextAreaFor(model => model.Description, new { @class="form-control", @placeholder="Heavy excavator for mining operations."})
       </div>
+      @if (ViewBag.Engineers.Count != 0)
+      {
+      <div class="form-group">
+        @Html.Label("Select Engineer qualified to repair this machine")
+        @Html.DropDownList("EngineerId", (IEnumerable<SelectListItem>)ViewBag.EngineerId, new { @class="form-control"})
+      </div>
+      }
       <button type="submit" class="btn btn-primary">Create Machine</button>
       <a>@Html.ActionLink("Cancel", "Index", "Home", null, new { @class="btn btn-danger"})</a>
     </form>
