@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  @await Html.PartialAsync("_Navbar")
+  @model Factory.Models.Engineer
+  <h1 class="display-4">@Model.Name Details</h1>
+  <p class="lead">@Model.Notes</p>
+
+  @if(@Model.JoinEntities.Count == 0)
+  {
+    <p>This Engineer is not qualified to service any machine.</p>
+    @if(ViewBag.Machines.Count == 0)
+    {
+    @Html.ActionLink("Add Machine", "Create", "Machine", null, new { @class = "btn btn-primary"})
+    }
+    else
+    {
+    @Html.ActionLink("Add License", "AddMachine", "Engineer", new { @id = Model.EngineerId}, new { @class = "btn btn-primary"})
+    }
+  }
+  else
+  {
+  <dl class="row">
+    <dt class="col-sm-3">Machine Repair Qualifications</dt>
+    @foreach(var join in Model.JoinEntities)
+    {
+        <dd class="col-sm-9">@Html.ActionLink(join.Machine.Name, "Details", "Machine", new { @id = join.MachineId}, new { @class = "text-primary"})</dd>
+    }
+  </dl>
+  }
+  @await Html.PartialAsync("_Footer")
+</div> 

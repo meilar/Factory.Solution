@@ -25,7 +25,7 @@
     <dt class="col-sm-3">Qualified Engineers</dt>
     @foreach(var join in Model.JoinEntities)
     {
-        <dd class="col-sm-9">@join.Engineer.Name</dd>
+        <dd class="col-sm-9">@Html.ActionLink(join.Engineer.Name, "Details", "Engineer", new { @id = join.EngineerId}, new { @class = "text-primary"})</dd>
     }
   </dl>
   }
