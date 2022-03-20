@@ -70,5 +70,12 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult RemoveEngineer(int id)
+    {
+      var thisJoin = _db.EngineerMachine.FirstOrDefault(engineerMachine => engineerMachine.EngineerMachineId == id);
+      _db.EngineerMachine.Remove(thisJoin);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

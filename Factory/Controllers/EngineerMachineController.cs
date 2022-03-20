@@ -19,7 +19,7 @@ namespace Factory.Controllers
       {
         _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = MachineId });
         _db.SaveChanges();
-        return View();
+        return RedirectToAction("Details", "Home");
       }
     }
 }
