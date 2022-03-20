@@ -25,9 +25,10 @@
     <dt class="col-sm-3">Machine Repair Qualifications</dt>
     @foreach(var join in Model.JoinEntities)
     {
-        <dd class="col-sm-9">@Html.ActionLink(join.Machine.Name, "Details", "Machine", new { @id = join.MachineId}, new { @class = "text-primary"})</dd>
+        <dd class="col-sm-9">@Html.ActionLink(join.Machine.Name, "Details", "Machine", new { @id = join.MachineId}, new { @class = "text-primary"}) | @Html.ActionLink("Delete License", "RemoveMachine", "Engineer", new { @id = join.EngineerMachineId}, new { @class = "text-danger"})</dd>
     }
   </dl>
+  @Html.ActionLink("Add License", "AddMachine", "Engineer", new { @id = Model.EngineerId}, new { @class = "btn btn-primary"})
   }
   @await Html.PartialAsync("_Footer")
 </div> 
