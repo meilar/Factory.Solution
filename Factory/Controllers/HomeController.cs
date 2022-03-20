@@ -29,7 +29,7 @@ namespace Factory.Controllers
         ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
         return View();
       }
-      public ActionResult Detail()
+      public ActionResult Details()
       {
         ViewBag.Machines = _db.Machines.ToList();
         ViewBag.Engineers = _db.Engineers.ToList();
