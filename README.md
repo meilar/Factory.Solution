@@ -49,7 +49,7 @@ Before downloading project files, you must have the following tools installed:
 - Navigate to the project folder in your Terminal with the following command: `cd Factory.Solution/Factory`
 - Install project dependencies with the command `dotnet restore`
 - Confirm that the project builds successfully with the command `dotnet build`
-- Start the database with the command `dotnet ef restore`
+- Start the database with the command `dotnet ef dabase update`
 - Start the application with the following command: `dotnet run`
 - Open the displayed URL in a web browser, typically `http://localhost:5000`. Please note that this project was designed and tested in Google Chrome, and all features may not be supported in all browsers.
 
