@@ -8,6 +8,18 @@ Matthew Eilar | [LinkedIn](https://www.linkedin.com/in/eilar-503/) | [email](mai
 
 This application allows a factory owner to track a list of technicians, a list of machines, and to associate those technicians with the machines that they are qualified to service. 
 
+## Technologies Used
+
+This site incorporates the following frameworks and languages:
+
+- C#
+- HTML
+- CSS
+- Bootstrap 4
+- .NET Core + Entity Core
+- Git
+- MySQL & MySQL Workbench
+
 ## Accessing this application
 
 ### Pre-installation
@@ -17,18 +29,7 @@ Before downloading project files, you must have the following tools installed:
 - You should know to open a command line on your operating system. [Here's a beginner's guide if you don't know what that means.](https://www.learnenough.com/command-line-tutorial)
 - Git | [Instructions](https://github.com/git-guides/install-git)
 - .NET | [Instructions](https://dotnet.microsoft.com/en-us/learn/dotnet/hello-world-tutorial/intro)
-- MySQL Community Server & MySQL Workbench | [Instructions](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql)
-
-
-### Setting up your database
-
-- Open MySQL Workbench and log into your server. 
-- Select `Administration` from the `Navigator` panel.
-- Select `Data Import/Restore`
-- Select `Import from self-contained file`, then choose `matthew_eilar.sql` in the `Factory` folder.
-- In `Default Schema to be Imported to`, select `New` and name the schema `matthew_eilar`. If you select a different name, the project will not load.
-- Click `Start Import`
-- Once the schema has been added, click on the circle with arrows icon to refresh your view, and confirm that the new schema appears in the list. If it does not appear, please try these instructions again.   
+- MySQL Community Server & MySQL Workbench | [Instructions](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql)   
 
 ### Downloading the application
 
@@ -45,22 +46,17 @@ Before downloading project files, you must have the following tools installed:
 
 ### Starting the application
 
-- Navigate to the project folder in your Terminal with the following command: `$ cd Factory.Solution/Factory`
+- Navigate to the project folder in your Terminal with the following command: `cd Factory.Solution/Factory`
 - Install project dependencies with the command `dotnet restore`
-- Start the application with the following command: `$ dotnet run`
+- Confirm that the project builds successfully with the command `dotnet build`
+- Start the database with the command `dotnet ef restore`
+- Start the application with the following command: `dotnet run`
 - Open the displayed URL in a web browser, typically `http://localhost:5000`. Please note that this project was designed and tested in Google Chrome, and all features may not be supported in all browsers.
 
-## Technologies Used
+## Further Exploration
 
-This site incorporates the following frameworks and languages:
-
-- C#
-- HTML
-- CSS
-- Bootstrap 4
-- .NET Core + Entity Core
-- Git
-- MySQL & MySQL Workbench
+- Application currently allows you to add duplicate machine licenses to engineers, I would need to add some validation logic to prevent this from happening.
+- 
 
 ## Acknowledgements
 
