@@ -1,10 +1,9 @@
+using Factory.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using Factory.Models;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace Factory.Controllers
 {
     public class EngineerController : Controller
@@ -55,6 +54,26 @@ namespace Factory.Controllers
           .ThenInclude(join => join.Machine)
           .FirstOrDefault(engineer => engineer.EngineerId == id);
         return View(thisEngineer);
+      }
+      public ActionResult Edit(int id)
+      {
+        ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+        ViewBag.Machines = _db.Machines.ToList();
+        var thisEngineer = _db.Engineers.FirstOrDefault(e => e.EngineerId == id);
+        return View(thisEngineer);
+      }
+
+      [HttpPost]
+      public ActionResult Edit(Engineer e, int MachineId)
+      {
+        _db.Entry(e).State = EntityState.Modified;
+        _db.SaveChanges();
+        if(MachineId != 0)
+        {
+          _db.EngineerMachine.Add(new EngineerMachine() {MachineId = MachineId, EngineerId = e.EngineerId});
+          _db.SaveChanges();
+        }
+        return RedirectToAction("Details", new {id = e.EngineerId});
       }
       public ActionResult Delete(int id)
       {
