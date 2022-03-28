@@ -29,6 +29,8 @@
     }
   </dl>
   @Html.ActionLink("Add License", "AddMachine", "Engineer", new { @id = Model.EngineerId}, new { @class = "btn btn-primary"})
+  @Html.ActionLink("Edit", "Edit", "Engineer", new { @id = Model.EngineerId}, new { @class = "btn btn-warning"})
+  @Html.ActionLink("Delete", "Delete", "Engineer", new { @id = Model.EngineerId}, new { @class = "btn btn-danger"})
   }
   @await Html.PartialAsync("_Footer")
 </div> 
